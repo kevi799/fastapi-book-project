@@ -1,4 +1,4 @@
-name: Deployment Pipeline
+name: Deploy to Render
 
 on:
   push:
@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Trigger Render Deployment
-   run: |
-        curl -X POST "https://api.render.com/v1/deploys" \
-        -H "Accept: application/json" \
-        -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
+        run: |
+          curl -X POST "https://api.render.com/v1/deploys" \
+          -H "Accept: application/json" \
+          -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
